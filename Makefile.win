@@ -6,9 +6,9 @@ CC       = gcc.exe
 WINDRES  = windres.exe
 OBJ      = main.o StudentInfo.o
 LINKOBJ  = main.o StudentInfo.o
-LIBS     = -L"D:/DEVC++/Dev-Cpp/MinGW64/lib" -L"D:/DEVC++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
-INCS     = -I"D:/DEVC++/Dev-Cpp/MinGW64/include" -I"D:/DEVC++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/DEVC++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
-CXXINCS  = -I"D:/DEVC++/Dev-Cpp/MinGW64/include" -I"D:/DEVC++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/DEVC++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/DEVC++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+LIBS     = -L"D:/C++/Dev-Cpp/MinGW64/lib" -L"D:/C++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"D:/C++/Dev-Cpp/MinGW64/include" -I"D:/C++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/C++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/C++/Dev-Cpp/MinGW64/include" -I"D:/C++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/C++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/C++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = Project.exe
 CXXFLAGS = $(CXXINCS) -std=c99
 CFLAGS   = $(INCS) -std=c99

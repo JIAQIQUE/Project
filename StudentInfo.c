@@ -4,10 +4,166 @@
 #define MAX 60//定义MAX最大值为60 
 #include "Student.h"
 
+void printf_evaluate()
+{	char a;
+	int *total=0;
+	printf("自我评估开始：\n");
+	printf("----------------------------\n");
+	printf("问题一：\n");
+	scanf("%c",&a);
+	getchar();
+	printf_sum(a,&total);
+	printf("问题二：\n");
+	scanf("%c",&a);
+	getchar();
+	printf_sum(a,&total);
+	printf("问题三：\n");
+		scanf("%c",&a);
+	getchar();
+	printf_sum(a,&total);
+	printf("问题四：\n");
+		scanf("%c",&a);
+	getchar();
+	printf_sum(a,&total);
+	printf("问题五：\n");
+		scanf("%c",&a);
+	getchar();
+	printf_sum(a,&total);
+	printf("%d",total);
+}
+void printf_sum(char a,int *total)
+{	
+	switch(a)
+	{
+		case 'a':
+			*total+=4;
+			break;
+		case 'b':
+		 	*total+=3;
+		 	break;
+		case 'c':
+			*total+=2;
+			break;
+		case 'd':
+			*total+=1; 
+			break;
+	}
+//	printf("%d\n",sum);
+}
+
+void printf_look()//查看心理老师简历信息 
+{
+	int b;
+	printf("-------查看心理老师信息--------\n");
+	scanf("%d",&b);
+	switch(b) 
+	{
+		case 1:
+			printf("粉色娇艳 你如今几岁了？\n");
+			break;
+			
+		case 2:
+			printf("翠果 打烂她的嘴\n");
+			break;
+			
+		case 3:
+			printf("赏一丈红\n");
+			break;
+	}
+}
+void printf_feedback()//收集学生反馈和建议
+{
+	char k,j;
+	printf("------收集心理咨询意见及反馈------\n");
+	printf("心理咨询结束后你的感受如何?\n");
+		scanf("%c",&k);
+	getchar();
+	
+	printf("心理老师的疏导过程有无需要改进的地方？\n");
+		scanf("%c",&j);
+	getchar();
+	
+	printf("感谢您的意见和反馈，祝您身体健康、生活愉快！\n");
+	
+ } 
+
+void printf_appoint()//学生预约菜单
+{
+	int select=0;
+
+	printf("心理咨询室开放时间为周一至周五！\n"); 
+	printf("----------------------------\n");
+	printf("请选择预约时间:\n");
+	printf("1、周一\n");
+	printf("2、周二\n");
+	printf("3、周三\n");
+	printf("4、周四\n");
+	printf("5、周五\n");
+	printf("----------------------------\n");
+	printf("请输入相应的序号选择!       \n");
+	scanf("%d",&select);
+	trans(select);
+	
+ } 
+void trans(int n)
+{
+	struct class_room WLW;//定义一个班级为WLW存储学生 
+	WLW.n=0;
+	switch (n)
+	{
+	case 1:
+		mon(&WLW);
+		break;
+	case 2:
+		tue();
+		break;
+	case 3:
+		wed();
+		break;
+	case 4:
+		thur();
+		break;
+	case 5:
+		fri();
+		break;
+		exit(0);
+			
+	}
+}
+
+void mon(struct class_room *WLW)
+{	
+//	int time[10],n=0;
+	printf("请输入预约时间：\n");
+	scanf("%d",&WLW->MIN[WLW->n].time);	//数组名代表首地址 
+	printf("请输入预约老师：\n");
+	scanf("%s",&WLW->MIN[WLW->n].teacher);	//取变量的地址 
+	printf("请输入地点：\n");
+	scanf("%s",&WLW->MIN[WLW->n].location);
+	printf("预约时间： %d\n",WLW->MIN[WLW->n].time);//第一个学生
+	printf("预约老师： %s\n",WLW->MIN[WLW->n].teacher);
+	printf("预约地点： %s\n",WLW->MIN[WLW->n].location);
+}
+void tue()
+{
+	
+}
+void wed()
+{
+	
+}
+void thur()
+{
+	
+}
+void fri()
+{
+	
+}
 
 void printf_menu()//打印主菜单函数 
 {
-	printf("        学生管理系统        \n");
+	printf("        学生心理咨询系统        \n");
 	printf("----------------------------\n");
 	printf("|1、添加学生信息            |\n");
 	printf("|2、显示所有学生信息        |\n");
