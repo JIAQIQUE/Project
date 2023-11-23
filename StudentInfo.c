@@ -4,51 +4,72 @@
 #define MAX 60//定义MAX最大值为60 
 #include "Student.h"
 
+//void printf_Mainmenu()//老师、同学端口选择 
+//{
+//	printf("        学生心理咨询系统        \n");
+//	printf("------------------------------\n")
+//	printf("|1、--------老师-------------|\n");
+//	printf("|2、--------学生-------------|\n");
+//	printf("|----------------------------|\n");
+//	printf("    请输入相应的序号选择!     \n");
+//}
+
+
+
 void printf_evaluate()
 {	char a;
-	int *total=0;
-	printf("自我评估开始：\n");
-	printf("----------------------------\n");
-	printf("问题一：\n");
+	int *total;
+	int b=0;
+	*total =&b;
+	printf("----------心理健康测试-----------\n");
+
+	printf("问题一：最近是否因为一些事而烦恼\na:最近一周内出现这种情况的日子不超过一天 (0分)\nb:最近一周内曾有1-2天出现这种情况 (1分)\nc:最近一周内曾有3-4天出现这种情况 (2分)\nd:最近一周内曾有5-7天出现这种情况 (3分)\n");
 	scanf("%c",&a);
 	getchar();
-	printf_sum(a,&total);
-	printf("问题二：\n");
+	printf_sum(a,&b);
+	
+	printf("问题二：最近是否胃口不好，不大想吃东西\na:最近一周内出现这种情况的日子不超过一天 (0分)\nb:最近一周内曾有1-2天出现这种情况 (1分)\nc:最近一周内曾有3-4天出现这种情况 (2分)\nd:最近一周内曾有5-7天出现这种情况 (3分)\n");
 	scanf("%c",&a);
 	getchar();
-	printf_sum(a,&total);
-	printf("问题三：\n");
+	printf_sum(a,&b);
+	printf("问题三：最近是否心里觉得苦闷，难以消除\na:最近一周内出现这种情况的日子不超过一天 (0分)\nb:最近一周内曾有1-2天出现这种情况 (1分)\nc:最近一周内曾有3-4天出现这种情况 (2分)\nd:最近一周内曾有5-7天出现这种情况 (3分)\n");
 		scanf("%c",&a);
 	getchar();
-	printf_sum(a,&total);
-	printf("问题四：\n");
+	printf_sum(a,&b);
+	printf("问题四：最近是否会觉得做事时无法集中精力\na:最近一周内出现这种情况的日子不超过一天 (0分)\nb:最近一周内曾有1-2天出现这种情况 (1分)\nc:最近一周内曾有3-4天出现这种情况 (2分)\nd:最近一周内曾有5-7天出现这种情况 (3分)\n");
 		scanf("%c",&a);
 	getchar();
-	printf_sum(a,&total);
-	printf("问题五：\n");
+	printf_sum(a,&b);
+	printf("问题五：最近是否会觉得情绪低沉\na:最近一周内出现这种情况的日子不超过一天 (0分)\nb:最近一周内曾有1-2天出现这种情况 (1分)\nc:最近一周内曾有3-4天出现这种情况 (2分)\nd:最近一周内曾有5-7天出现这种情况 (3分)\n");
 		scanf("%c",&a);
 	getchar();
-	printf_sum(a,&total);
-	printf("%d",total);
+	printf_sum(a,&b);
+	printf("您的心理测试分数为：%d分\n",b);
+	if(b>=0&&b<6)
+		printf("根据您的心理测试情况来看：你有轻度的情绪困扰，可尝试进行自我心理调整来解决困扰，不会对你的心理健康产生影响。\n");
+	else if(b>5&&b<16)
+		printf("根据您的心理测试情况来看：你有较严重的心理困惑与烦恼，通过自身的心理调整已经有些困难了，这时应考虑到专业的心理咨询机构进行心理咨询。\n") ;
 }
-void printf_sum(char a,int *total)
+
+
+int printf_sum(char a,int *b)
 {	
 	switch(a)
-	{
+	{	
+		
 		case 'a':
-			*total+=4;
+			*b+=0;
 			break;
 		case 'b':
-		 	*total+=3;
+		 	*b+=1;
 		 	break;
 		case 'c':
-			*total+=2;
+			*b+=2;
 			break;
 		case 'd':
-			*total+=1; 
+			*b+=3; 
 			break;
 	}
-//	printf("%d\n",sum);
 }
 
 void printf_look()//查看心理老师简历信息 
@@ -115,16 +136,16 @@ void trans(int n)
 		mon(&WLW);
 		break;
 	case 2:
-		tue();
+		tue(&WLW);
 		break;
 	case 3:
-		wed();
+		wed(&WLW);
 		break;
 	case 4:
-		thur();
+		thur(&WLW);
 		break;
 	case 5:
-		fri();
+		fri(&WLW);
 		break;
 		exit(0);
 			
@@ -144,21 +165,54 @@ void mon(struct class_room *WLW)
 	printf("预约老师： %s\n",WLW->MIN[WLW->n].teacher);
 	printf("预约地点： %s\n",WLW->MIN[WLW->n].location);
 }
-void tue()
-{
+void tue(struct class_room *WLW)
+{	
+	printf("请输入预约时间：\n");
+	scanf("%d",&WLW->MIN[WLW->n].time);	//数组名代表首地址 
+	printf("请输入预约老师：\n");
+	scanf("%s",&WLW->MIN[WLW->n].teacher);	//取变量的地址 
+	printf("请输入地点：\n");
+	scanf("%s",&WLW->MIN[WLW->n].location);
+	printf("预约时间： %d\n",WLW->MIN[WLW->n].time);//第一个学生
+	printf("预约老师： %s\n",WLW->MIN[WLW->n].teacher);
+	printf("预约地点： %s\n",WLW->MIN[WLW->n].location);
 	
 }
-void wed()
+void wed(struct class_room *WLW)
 {
-	
+	printf("请输入预约时间：\n");
+	scanf("%d",&WLW->MIN[WLW->n].time);	//数组名代表首地址 
+	printf("请输入预约老师：\n");
+	scanf("%s",&WLW->MIN[WLW->n].teacher);	//取变量的地址 
+	printf("请输入地点：\n");
+	scanf("%s",&WLW->MIN[WLW->n].location);
+	printf("预约时间： %d\n",WLW->MIN[WLW->n].time);//第一个学生
+	printf("预约老师： %s\n",WLW->MIN[WLW->n].teacher);
+	printf("预约地点： %s\n",WLW->MIN[WLW->n].location);
 }
-void thur()
+void thur(struct class_room *WLW)
 {
-	
+	printf("请输入预约时间：\n");
+	scanf("%d",&WLW->MIN[WLW->n].time);	//数组名代表首地址 
+	printf("请输入预约老师：\n");
+	scanf("%s",&WLW->MIN[WLW->n].teacher);	//取变量的地址 
+	printf("请输入地点：\n");
+	scanf("%s",&WLW->MIN[WLW->n].location);
+	printf("预约时间： %d\n",WLW->MIN[WLW->n].time);//第一个学生
+	printf("预约老师： %s\n",WLW->MIN[WLW->n].teacher);
+	printf("预约地点： %s\n",WLW->MIN[WLW->n].location);
 }
-void fri()
+void fri(struct class_room *WLW)
 {
-	
+	printf("请输入预约时间：\n");
+	scanf("%d",&WLW->MIN[WLW->n].time);	//数组名代表首地址 
+	printf("请输入预约老师：\n");
+	scanf("%s",&WLW->MIN[WLW->n].teacher);	//取变量的地址 
+	printf("请输入地点：\n");
+	scanf("%s",&WLW->MIN[WLW->n].location);
+	printf("预约时间： %d\n",WLW->MIN[WLW->n].time);//第一个学生
+	printf("预约老师： %s\n",WLW->MIN[WLW->n].teacher);
+	printf("预约地点： %s\n",WLW->MIN[WLW->n].location);
 }
 
 void printf_menu()//打印主菜单函数 
@@ -185,7 +239,10 @@ void add_student(struct class_room *WLW)//添加学生信息，其中struct class_room *W
 	scanf("%d",&WLW->st[WLW->n].id);
 	printf("请输入学生的性别：\n");
 	scanf("%s",WLW->st[WLW->n].sex);
-	
+	printf_evaluate();	
+		printf_look();
+		printf_appoint();
+		printf_feedback();
 	WLW->n++;//班级人数加一
 }
 

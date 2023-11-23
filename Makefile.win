@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o StudentInfo.o
-LINKOBJ  = main.o StudentInfo.o
+OBJ      = main.o StudentInfo.o teacher.o
+LINKOBJ  = main.o StudentInfo.o teacher.o
 LIBS     = -L"D:/C++/Dev-Cpp/MinGW64/lib" -L"D:/C++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"D:/C++/Dev-Cpp/MinGW64/include" -I"D:/C++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/C++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"D:/C++/Dev-Cpp/MinGW64/include" -I"D:/C++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/C++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/C++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -29,3 +29,6 @@ main.o: main.c
 
 StudentInfo.o: StudentInfo.c
 	$(CC) -c StudentInfo.c -o StudentInfo.o $(CFLAGS)
+
+teacher.o: teacher.c
+	$(CC) -c teacher.c -o teacher.o $(CFLAGS)
